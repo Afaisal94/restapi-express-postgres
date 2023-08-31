@@ -1,12 +1,13 @@
 const { Sequelize } = require('sequelize');
 
-let DATABASE = "db_shop";
-let USER = "root";
-let PASSWORD = "docker";
+let DATABASE = process.env.DB_NAME;
+let USER = process.env.DB_USER;
+let PASSWORD = process.env.DB_PASSWORD;
 
 const db = new Sequelize(DATABASE, USER, PASSWORD,{
-    host: 'localhost',
-    dialect: "postgres"
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+    port: process.env.DB_PORT
 });
 
 (async () => {
